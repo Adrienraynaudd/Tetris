@@ -22,40 +22,14 @@ public class GridDisplay : MonoBehaviour
             board.Add(Ligne);
         }
         SetColors(board);
-        SetTickFunction(clearr);
-        SetTickFunction(carre);
+        Pieces.LeLG(board);
+        SetColors(board);
             }
 
     // Paramètre la fonction devant être appelée à chaque tick.
     // C'est ici que le gros de la logique temporelle de votre jeu aura lieu!
     // Cette fonction peut être une méthode d'une autre classe
     // et doit renvoyer void, et ne prendre aucun argument.
-    public static void clearr(){
-        List<List<SquareColor>> board = new List<List<SquareColor>>(); 
-        for (int i=0;i<22;i++){
-            List<SquareColor> Ligne = new List<SquareColor>();
-            for (int j = 0;j<10;j++){
-                Ligne.Add(SquareColor.TRANSPARENT);
-            }
-            board.Add(Ligne);
-        }
-        SetColors(board);
-    }
-    public static void carre (){
-        List<List<SquareColor>> board = new List<List<SquareColor>>(); 
-        for (int i=0;i<22;i++){
-            List<SquareColor> Ligne = new List<SquareColor>();
-            for (int j = 0;j<10;j++){
-               Ligne.Add(SquareColor.LIGHT_BLUE);
-               if (j == 5 || j== 6){
-                   Ligne[j]=SquareColor.RED;
-               }
-
-            }
-            board.Add(Ligne);
-        }
-        SetColors(board);
-    }
     public static void SetTickFunction(TickFunction function){
         _grid.Tick = function;
     }
