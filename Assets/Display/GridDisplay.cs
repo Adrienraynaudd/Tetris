@@ -22,7 +22,7 @@ public class GridDisplay : MonoBehaviour
             board.Add(Ligne);
         }
         SetColors(board);
-        Pieces.LeLG(board);
+        Pieces.piece(board);
         SetColors(board);
             }
 

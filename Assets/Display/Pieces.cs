@@ -4,6 +4,32 @@ using UnityEngine;
 
 public class Pieces : MonoBehaviour
 {
+    public static void  piece (List<List<SquareColor>> board){
+        int rand = Random.Range(1, 7);
+        switch (rand){
+            case 1:
+                Pieces.carre(board);
+                break;
+            case 2:
+                Pieces.LeT(board);
+                break;
+            case 3:
+                Pieces.LeI(board);
+                break;
+            case 4:
+                Pieces.LeLD(board);
+                break;
+            case 5:
+                Pieces.LeLG(board);
+                break;
+            case 6:
+                Pieces.LeZD(board);
+                break;
+            case 7:
+                Pieces.LeZG(board);
+                break;
+        }
+    }
         public static void carre (List<List<SquareColor>> board){
             board[0][4] = SquareColor.YELLOW;
             board[0][5] = SquareColor.YELLOW;
