@@ -30,7 +30,7 @@ public class Pieces : MonoBehaviour
                 break;
         }
     }
-        public static void carre (List<List<SquareColor>> board){
+        public static  void carre (List<List<SquareColor>> board){
             board[0][4] = SquareColor.YELLOW;
             board[0][5] = SquareColor.YELLOW;
             board[1][4] = SquareColor.YELLOW;
@@ -71,5 +71,17 @@ public class Pieces : MonoBehaviour
             board[0][4] = SquareColor.ORANGE;
             board[1][4] = SquareColor.ORANGE;
             board[1][5] = SquareColor.ORANGE;
+        }
+        // down piece in board
+        //index down
+        public static void DownPiece (List<List<SquareColor>> board){
+            for (int i = 21; i >=0; i--){
+                for (int j = 10; j >=0; j--){
+                    if (board[i][j] != SquareColor.LIGHT_BLUE && i<22){
+                        board[i+1][j] = board[i][j];
+                        board[i][j] = SquareColor.LIGHT_BLUE;
+                    }
+                }
+            }
         }
 }

@@ -13,7 +13,7 @@ public class GridDisplay : MonoBehaviour
 
     // Cette fonction se lance au lancement du jeu, avant le premier affichage.
     public static void Initialize(){
-        List<List<SquareColor>> board = new List<List<SquareColor>>(); 
+        List<List<SquareColor>> board = new List<List<SquareColor>>();
         for (int i=0;i<22;i++){
             List<SquareColor> Ligne = new List<SquareColor>();
             for (int j = 0;j<10;j++){
@@ -23,6 +23,8 @@ public class GridDisplay : MonoBehaviour
         }
         SetColors(board);
         Pieces.piece(board);
+        SetColors(board);
+        Pieces.DownPiece(board);
         SetColors(board);
             }
 
@@ -34,7 +36,7 @@ public class GridDisplay : MonoBehaviour
         _grid.Tick = function;
     }
 
-    // Paramètre la fonction devant être appelée lorsqu'on appuie sur la barre d'espace 
+    // Paramètre la fonction devant être appelée lorsqu'on appuie sur la barre d'espace
     // pour faire tourner la pièce dans le sens horaire.
     // Cette fonction peut être une méthode d'une autre classe
     // et doit renvoyer void, et ne prendre aucun argument.
