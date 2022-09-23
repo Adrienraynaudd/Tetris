@@ -76,7 +76,7 @@ public class Pieces : MonoBehaviour
         //index down
         public static void DownPiece (List<List<SquareColor>> board){
             for (int i = 21; i >=0; i--){
-                for (int j = 10; j >=0; j--){
+                for (int j = 9; j >=0; j--){
                     if (board[i][j] != SquareColor.LIGHT_BLUE && i<22){
                         board[i+1][j] = board[i][j];
                         board[i][j] = SquareColor.LIGHT_BLUE;
