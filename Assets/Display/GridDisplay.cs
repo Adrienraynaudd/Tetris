@@ -13,6 +13,59 @@ public class GridDisplay : MonoBehaviour
 
     // Cette fonction se lance au lancement du jeu, avant le premier affichage.
     public static void Initialize(){
+        List<List<SquareColor>> board = new List<List<SquareColor>>(); 
+        for (int i=0;i<22;i++){
+            List<SquareColor> Ligne = new List<SquareColor>();
+            for (int j = 0;j<10;j++){
+                if(i%2 == 0){
+                    if (j % 2 == 0){
+                    Ligne.Add(SquareColor.LIGHT_BLUE);
+                }
+                else{
+                    Ligne.Add(SquareColor.LIGHT_BLUE);
+                }
+                }
+                else{
+                    if (j % 2 == 0){
+                    Ligne.Add(SquareColor.LIGHT_BLUE);
+                }
+                else{
+                    Ligne.Add(SquareColor.LIGHT_BLUE);
+                }
+                }  
+            }
+            board.Add(Ligne);
+        }
+        SetColors(board);
+        Pieces.piece(board);
+        SetColors(board);
+
+        SetMoveLeftFunction(()=>
+        {
+            for (int i=0;i<22;i++){
+                        for (int j = 0;j<10;j++){
+                            if (board[i][j] != SquareColor.LIGHT_BLUE){
+                                board[i][j-1] = board[i][j];
+                                board[i][j] =SquareColor.LIGHT_BLUE;
+                                }
+                }  
+                }
+                SetColors(board);
+        });
+
+        SetMoveRightFunction(()=>
+        {
+            for (int k=0;k<22;k++){ // attention : ici on parcourt le tableau de droite à gauche afin de ne pas tomber sur la case qu'on vient juste de modifier.
+                        for (int l = 9;l > -1;l--){
+                            if (board[k][l] != SquareColor.LIGHT_BLUE){
+                                board[k][l+1] = board[k][l];
+                                board[k][l] =SquareColor.LIGHT_BLUE;
+                                }
+                }  
+                }
+                SetColors(board);
+        });
+
         // TODO : Complétez cette fonction de manière à appeler le code qui initialise votre jeu.fgh
         // TODO : Appelez SetTickFunction en lui passant en argument une fonction ne prenant pas d'argument et renvoyant Void.
         //        Cette fonction sera exécutée à chaque tick du jeu, c'est à dire, initialement, toutes les secondes.
