@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GridDisplay : MonoBehaviour
 {
-
     // Hauteur de la grille en nombre de cases
     public int height = 22;
 
@@ -24,8 +23,11 @@ public class GridDisplay : MonoBehaviour
         SetColors(board);
         Pieces.piece(board);
         SetColors(board);
-        Pieces.DownPiece(board);
-        SetColors(board);
+        SetTickTime(1);
+        SetTickFunction (() =>  {
+            Pieces.DownPiece(board);
+            SetColors(board);
+        });
             }
 
     // Paramètre la fonction devant être appelée à chaque tick.
