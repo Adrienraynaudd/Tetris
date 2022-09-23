@@ -39,31 +39,13 @@ public class GridDisplay : MonoBehaviour
         SetColors(board);
         Pieces.piece(board);
         SetColors(board);
-
-        SetMoveLeftFunction(()=>
-        {
-            for (int i=0;i<22;i++){
-                        for (int j = 0;j<10;j++){
-                            if (board[i][j] != SquareColor.LIGHT_BLUE){
-                                board[i][j-1] = board[i][j];
-                                board[i][j] =SquareColor.LIGHT_BLUE;
-                                }
-                }  
-                }
-                SetColors(board);
+        SetMoveLeftFunction(()=>{
+            Pieces.MoveL(board);
+            SetColors(board);
         });
-
-        SetMoveRightFunction(()=>
-        {
-            for (int k=0;k<22;k++){ // attention : ici on parcourt le tableau de droite à gauche afin de ne pas tomber sur la case qu'on vient juste de modifier.
-                        for (int l = 9;l > -1;l--){
-                            if (board[k][l] != SquareColor.LIGHT_BLUE){
-                                board[k][l+1] = board[k][l];
-                                board[k][l] =SquareColor.LIGHT_BLUE;
-                                }
-                }  
-                }
-                SetColors(board);
+        SetMoveRightFunction(()=>{
+            Pieces.MoveR(board);
+            SetColors(board);
         });
 
         // TODO : Complétez cette fonction de manière à appeler le code qui initialise votre jeu.fgh

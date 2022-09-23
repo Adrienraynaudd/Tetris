@@ -73,4 +73,28 @@ public class Pieces : MonoBehaviour
             board[1][4] = SquareColor.ORANGE;
             board[1][5] = SquareColor.ORANGE;
         }
+
+        public static void MoveL(List<List<SquareColor>> board)
+        {
+            for (int i=0;i<22;i++){
+                        for (int j = 0;j<10;j++){
+                            if (board[i][j] != SquareColor.LIGHT_BLUE){
+                                board[i][j-1] = board[i][j];
+                                board[i][j] =SquareColor.LIGHT_BLUE;
+                                }
+                }  
+                }
+        }
+
+        public static void MoveR(List<List<SquareColor>> board)
+        {
+            for (int k=0;k<22;k++){ // attention : ici on parcourt le tableau de droite à gauche afin de ne pas tomber sur la case qu'on vient juste de modifier.
+                        for (int l = 9;l > -1;l--){
+                            if (board[k][l] != SquareColor.LIGHT_BLUE){
+                                board[k][l+1] = board[k][l];
+                                board[k][l] =SquareColor.LIGHT_BLUE;
+                                }
+                }  
+                }
+        }
 }
