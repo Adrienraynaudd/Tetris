@@ -108,22 +108,21 @@ public class Pieces : MonoBehaviour
         public static  void DownPiece (List<List<SquareColor>> board){
             for (int i = 21; i >=0; i--){
                 for (int j = 9; j >=0; j--){
-                    if (board[i][j] != SquareColor.LIGHT_BLUE ){
+                    if (board[i][j] != SquareColor.LIGHT_BLUE && PiecesTetris.Contains(new List<int> {i,j})){
                         if (i< 21){
-                        if (board[i+1][j] == SquareColor.LIGHT_BLUE && PiecesTetris.Contains(new List<int> {i,j}) ){
+                        if (board[i+1][j] == SquareColor.LIGHT_BLUE ){
                             board[i+1][j] = board[i][j];
                             board[i][j] = SquareColor.LIGHT_BLUE;
-                            if (PiecesTetris.Contains(new List<int> {i,j})){
-                                PiecesTetris.Remove(new List<int> {i,j});
-                                PiecesTetris.Add(new List<int> {i+1,j});
-                            }
+                            PiecesTetris.Remove(new List<int> {i,j});
+                            PiecesTetris.Add(new List<int> {i+1,j});
                         }else {
-                            if (PiecesTetris.Contains(new List<int> {i,j})){
                                 PiecesTetris.Clear();
                                 piece(board);
-                            }
                         }
-                    }
+                    }else {
+                                PiecesTetris.Clear();
+                                piece(board);
+                        }
                 }
             }
         }
