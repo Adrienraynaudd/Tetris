@@ -23,7 +23,6 @@ public class GridDisplay : MonoBehaviour
         SetColors(board);
         Pieces.piece(board);
         SetColors(board);
-        SetTickTime(1);
         SetTickFunction (() =>  {
             Pieces.DownPiece(board);
             SetColors(board);
