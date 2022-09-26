@@ -24,15 +24,15 @@ public class GridDisplay : MonoBehaviour
         Pieces.piece(board);
         SetColors(board);
         SetTickFunction (() =>  {
-            Pieces.DownPiece(board);
+            Position.DownPiece(board);
             SetColors(board);
         });
         SetMoveLeftFunction(()=>{
-            Pieces.MoveL(board);
+            Position.MoveL(board);
             SetColors(board);
         });
         SetMoveRightFunction(()=>{
-            Pieces.MoveR(board);
+            Position.MoveR(board);
             SetColors(board);
         });
             }
