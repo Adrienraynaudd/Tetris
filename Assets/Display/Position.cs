@@ -35,9 +35,11 @@ public class Position{
             for (int i=0;i<22;i++){
                         for (int j = 0;j<10;j++){
                             if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
+                                if (board[i][j-1]== SquareColor.LIGHT_BLUE){
                                 board[i][j-1] = board[i][j];
                                 board[i][j] =SquareColor.LIGHT_BLUE;
                                 PiecesTetris.Add(new Position(i,j-1));
+                                }
                                 }
                 }
                 }
@@ -47,9 +49,11 @@ public class Position{
             for (int k=0;k<22;k++){ // attention : ici on parcourt le tableau de droite à gauche afin de ne pas tomber sur la case qu'on vient juste de modifier.
                         for (int l = 9;l > -1;l--){
                             if (board[k][l] != SquareColor.LIGHT_BLUE && Contain(k,l)){
+                                if (board[k][l+1] == SquareColor.LIGHT_BLUE){
                                 board[k][l+1] = board[k][l];
                                 board[k][l] =SquareColor.LIGHT_BLUE;
                                 PiecesTetris.Add(new Position(k,l+1));
+                                }
                                 }
                 }
                 }
