@@ -27,6 +27,14 @@ public class GridDisplay : MonoBehaviour
             Pieces.DownPiece(board);
             SetColors(board);
         });
+        SetMoveLeftFunction(()=>{
+            Pieces.MoveL(board);
+            SetColors(board);
+        });
+        SetMoveRightFunction(()=>{
+            Pieces.MoveR(board);
+            SetColors(board);
+        });
             }
 
     // Paramètre la fonction devant être appelée à chaque tick.
