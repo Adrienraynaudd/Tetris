@@ -45,7 +45,7 @@ public class GridDisplay : MonoBehaviour
         _grid.Rotate = function;
     }
 
-    // Paramètre la fonction devant être appelée lorsqu'on appuie sur la flèche de gauche 
+    // Paramètre la fonction devant être appelée lorsqu'on appuie sur la flèche de gauche
     // pour bouger la pièce vers la gauche.
     // Cette fonction peut être une méthode d'une autre classe
     // et doit renvoyer void, et ne prendre aucun argument.
@@ -53,7 +53,7 @@ public class GridDisplay : MonoBehaviour
         _grid.MoveLeft = function;
     }
 
-    // Paramètre la fonction devant être appelée lorsqu'on appuie sur la flèche de droite 
+    // Paramètre la fonction devant être appelée lorsqu'on appuie sur la flèche de droite
     // pour bouger la pièce vers la droite.
     // Cette fonction peut être une méthode d'une autre classe
     // et doit renvoyer void, et ne prendre aucun argument.
@@ -75,7 +75,7 @@ public class GridDisplay : MonoBehaviour
     }
 
     // Modifie toutes les couleurs de chaque case de la grille.
-    // Cette fonction doit prendre en argument un tableau de LIGNES, de haut vers le bas, contenant 
+    // Cette fonction doit prendre en argument un tableau de LIGNES, de haut vers le bas, contenant
     // des couleurs de case allant de gauche vers la droite.
     // Vous appellerez a priori cette fonction une fois par TickFunction, une fois le nouvel état de la grille
     // calculé.
@@ -106,5 +106,4 @@ public class GridDisplay : MonoBehaviour
     void Start(){
         Initialize();
     }
-    
 }
