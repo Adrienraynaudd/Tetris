@@ -10,6 +10,7 @@ public class Position{
         this.posA = posA;
         this.posB = posB;
     }
+        public static int index;
            public static  void DownPiece (List<List<SquareColor>> board){
             for (int i = 21; i >=0; i--){
                 for (int j = 9; j >=0; j--){
@@ -19,13 +20,21 @@ public class Position{
                             board[i+1][j] = board[i][j];
                             board[i][j] = SquareColor.LIGHT_BLUE;
                             PiecesTetris.Add(new Position(i+1,j));
+                            PiecesTetris.Remove(new Position(i,j));
+                            index++;
+                            if (index == 4){
+                                check(board);
+                                index =0;
+                            }
                         }else {
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
+                                index =0;
                         }
                     }else {
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
+                                index =0;
                         }
                 }
             }
@@ -38,6 +47,7 @@ public class Position{
                                 if (board[i][j-1]== SquareColor.LIGHT_BLUE){
                                 board[i][j-1] = board[i][j];
                                 board[i][j] =SquareColor.LIGHT_BLUE;
+                                 PiecesTetris.Remove(new Position(i,j));
                                 PiecesTetris.Add(new Position(i,j-1));
                                 }
                                 }
@@ -52,6 +62,7 @@ public class Position{
                                 if (board[k][l+1] == SquareColor.LIGHT_BLUE){
                                 board[k][l+1] = board[k][l];
                                 board[k][l] =SquareColor.LIGHT_BLUE;
+                                 PiecesTetris.Remove(new Position(k,l));
                                 PiecesTetris.Add(new Position(k,l+1));
                                 }
                                 }
@@ -77,5 +88,19 @@ public class Position{
         }
         return false;
     }
+    public static void check(List<List<SquareColor>> board){
+        for (int i = 0; i <=21; i++){
+                for (int j = 0; j <=9; j++){
+                    if (Contain(i,j) ){
+                        if (i<21){
+                            if (board[i+1][j] != SquareColor.LIGHT_BLUE && !Contain(i+1,j)){
+                                PiecesTetris.Clear();
+                                Pieces.piece(board);
+                                index =0;
+                            }
+                        }
+                    }
+            }
+        }
+    }
 }
-// changer vitesse tick et changer aussi dans la création de la piece
