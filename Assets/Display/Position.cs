@@ -17,15 +17,15 @@ public class Position{
                     if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){ // if the square is not empty and if the square is part of the piece
                         if (i< 21){
                         if (board[i+1][j] == SquareColor.LIGHT_BLUE ){
-                            if (index == 4){ // verifie if the piece can be moved down
-                                checkPiece(board);
-                                index =0;
-                            }
                             board[i+1][j] = board[i][j];
                             board[i][j] = SquareColor.LIGHT_BLUE;
                             PiecesTetris.Add(new Position(i+1,j));
                             PiecesTetris.Remove(new Position(i,j));
                             index++;
+                            if (index >= 4){ // verifie if the piece can be moved down
+                                checkPiece(board);
+                                index =0;
+                            }
                         }else {
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
