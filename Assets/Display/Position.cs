@@ -10,22 +10,22 @@ public class Position{
         this.posA = posA;
         this.posB = posB;
     }
-        public static int index;
+        public static int index = 4;
            public static  void DownPiece (List<List<SquareColor>> board){
             for (int i = 21; i >=0; i--){
                 for (int j = 9; j >=0; j--){
                     if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
                         if (i< 21){
                         if (board[i+1][j] == SquareColor.LIGHT_BLUE ){
+                            if (index == 4){
+                                checkPiece(board);
+                                index =0;
+                            }
                             board[i+1][j] = board[i][j];
                             board[i][j] = SquareColor.LIGHT_BLUE;
                             PiecesTetris.Add(new Position(i+1,j));
                             PiecesTetris.Remove(new Position(i,j));
                             index++;
-                            if (index == 4){
-                                check(board);
-                                index =0;
-                            }
                         }else {
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
@@ -88,7 +88,7 @@ public class Position{
         }
         return false;
     }
-    public static void check(List<List<SquareColor>> board){
+    public static void checkPiece(List<List<SquareColor>> board){
         for (int i = 0; i <=21; i++){
                 for (int j = 0; j <=9; j++){
                     if (Contain(i,j) ){
