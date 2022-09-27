@@ -20,8 +20,8 @@ public class GridDisplay : MonoBehaviour
             }
             board.Add(Ligne);
         }
-        SetColors(board);
-        Pieces.piece(board);
+        SetColors(board); // Set the color of the squares
+        Pieces.piece(board);// Create the first piece
         SetColors(board);
         SetTickFunction (() =>  { // We define the function that will be called at each tick
             Position.DownPiece(board);
