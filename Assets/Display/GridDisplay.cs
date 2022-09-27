@@ -12,7 +12,7 @@ public class GridDisplay : MonoBehaviour
 
     // Cette fonction se lance au lancement du jeu, avant le premier affichage.
     public static void Initialize(){
-        List<List<SquareColor>> board = new List<List<SquareColor>>();
+        List<List<SquareColor>> board = new List<List<SquareColor>>(); // Creation background board
         for (int i=0;i<22;i++){
             List<SquareColor> Ligne = new List<SquareColor>();
             for (int j = 0;j<10;j++){
@@ -23,19 +23,19 @@ public class GridDisplay : MonoBehaviour
         SetColors(board);
         Pieces.piece(board);
         SetColors(board);
-        SetTickFunction (() =>  {
+        SetTickFunction (() =>  { // We define the function that will be called at each tick
             Position.DownPiece(board);
             SetColors(board);
         });
-        SetMoveLeftFunction(()=>{
+        SetMoveLeftFunction(()=>{ // We define the function that will be called when the left arrow is pressed
             Position.MoveL(board);
             SetColors(board);
         });
-        SetMoveRightFunction(()=>{
+        SetMoveRightFunction(()=>{ // We define the function that will be called when the right arrow is pressed
             Position.MoveR(board);
             SetColors(board);
         });
-        SetRushFunction(()=>{
+        SetRushFunction(()=>{ // We define the function that will be called when the down arrow is pressed
             Position.Rush(board);
             SetColors(board);
         });

@@ -11,13 +11,13 @@ public class Position{
         this.posB = posB;
     }
         public static int index = 4;
-           public static  void DownPiece (List<List<SquareColor>> board){
+           public static  void DownPiece (List<List<SquareColor>> board){ // move the piece down
             for (int i = 21; i >=0; i--){
                 for (int j = 9; j >=0; j--){
-                    if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
+                    if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){ // if the square is not empty and if the square is part of the piece
                         if (i< 21){
                         if (board[i+1][j] == SquareColor.LIGHT_BLUE ){
-                            if (index == 4){
+                            if (index == 4){ // verifie if the piece can be moved down
                                 checkPiece(board);
                                 index =0;
                             }
@@ -40,7 +40,7 @@ public class Position{
             }
         }
     }
-    public static void MoveL(List<List<SquareColor>> board){
+    public static void MoveL(List<List<SquareColor>> board){ // move the piece to the left
             for (int i=0;i<22;i++){
                         for (int j = 0;j<10;j++){
                             if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
@@ -55,8 +55,8 @@ public class Position{
                 }
         }
 
-        public static void MoveR(List<List<SquareColor>> board){
-            for (int k=0;k<22;k++){ // attention : ici on parcourt le tableau de droite à gauche afin de ne pas tomber sur la case qu'on vient juste de modifier.
+        public static void MoveR(List<List<SquareColor>> board){ // move the piece to the right
+            for (int k=0;k<22;k++){ //attention: here we go through the table from right to left so as not to fall on the box that we have just modified.
                         for (int l = 9;l > -1;l--){
                             if (board[k][l] != SquareColor.LIGHT_BLUE && Contain(k,l)){
                                 if (board[k][l+1] == SquareColor.LIGHT_BLUE){
@@ -69,7 +69,7 @@ public class Position{
                 }
                 }
         }
-        public static void Rush(List<List<SquareColor>> board){
+        public static void Rush(List<List<SquareColor>> board){ // move the piece to the bottom
             for (int i = 21; i >=0; i--){
                 for (int j = 9; j >=0; j--){
                     if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
@@ -79,7 +79,7 @@ public class Position{
         }
     }
 
-    public static bool Contain (int A , int B){
+    public static bool Contain (int A , int B){ // check if the square is part of the piece
         Position myPos = new Position(A,B);
         foreach (Position pos in PiecesTetris){
             if (pos.posA == myPos.posA && pos.posB == myPos.posB){
@@ -88,7 +88,7 @@ public class Position{
         }
         return false;
     }
-    public static void checkPiece(List<List<SquareColor>> board){
+    public static void checkPiece(List<List<SquareColor>> board){ // check if the piece can be moved down
         for (int i = 0; i <=21; i++){
                 for (int j = 0; j <=9; j++){
                     if (Contain(i,j) ){
