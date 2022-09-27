@@ -31,6 +31,7 @@ public class Pieces : MonoBehaviour
         }
     }
         public static  void carre (List<List<SquareColor>> board){
+            GridDisplay.SetTickTime(1f);
             board[0][4] = SquareColor.YELLOW;
             board[0][5] = SquareColor.YELLOW;
             board[1][4] = SquareColor.YELLOW;
@@ -41,6 +42,7 @@ public class Pieces : MonoBehaviour
             Position.PiecesTetris.Add(new Position (1,5));
         }
          public static void LeT (List<List<SquareColor>> board){
+            GridDisplay.SetTickTime(1f);
             board[0][3] = SquareColor.PURPLE;
             board[0][4] = SquareColor.PURPLE;
             board[0][5] = SquareColor.PURPLE;
@@ -51,6 +53,7 @@ public class Pieces : MonoBehaviour
             Position.PiecesTetris.Add(new Position (1,4));
         }
          public static void LeI (List<List<SquareColor>> board){
+            GridDisplay.SetTickTime(1f);
             board[0][3] = SquareColor.DEEP_BLUE;
             board[0][4] = SquareColor.DEEP_BLUE;
             board[0][5] = SquareColor.DEEP_BLUE;
@@ -61,6 +64,7 @@ public class Pieces : MonoBehaviour
             Position.PiecesTetris.Add(new Position (0,6));
         }
         public static void LeLD (List<List<SquareColor>> board){
+            GridDisplay.SetTickTime(1f);
             board[0][4] = SquareColor.GREEN;
             board[1][4] = SquareColor.GREEN;
             board[2][4] = SquareColor.GREEN;
@@ -71,6 +75,7 @@ public class Pieces : MonoBehaviour
             Position.PiecesTetris.Add(new Position (2,5));
         }
         public static void LeLG (List<List<SquareColor>> board){
+            GridDisplay.SetTickTime(1f);
             board[0][5] = SquareColor.RED;
             board[1][5] = SquareColor.RED;
             board[2][5] = SquareColor.RED;
@@ -81,6 +86,7 @@ public class Pieces : MonoBehaviour
             Position.PiecesTetris.Add(new Position (2,4));
         }
         public static void LeZD (List<List<SquareColor>> board){
+            GridDisplay.SetTickTime(1f);
             board[0][4] = SquareColor.ORANGE;
             board[0][5] = SquareColor.ORANGE;
             board[1][3] = SquareColor.ORANGE;
@@ -91,6 +97,7 @@ public class Pieces : MonoBehaviour
             Position.PiecesTetris.Add(new Position (1,4));
         }
         public static void LeZG (List<List<SquareColor>> board){
+            GridDisplay.SetTickTime(1f);
             board[0][3] = SquareColor.ORANGE;
             board[0][4] = SquareColor.ORANGE;
             board[1][4] = SquareColor.ORANGE;

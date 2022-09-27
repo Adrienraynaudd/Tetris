@@ -58,9 +58,12 @@ public class Position{
                 }
                 }
         }
-        public static void SpaceDown(List<List<SquareColor>> board){
+        public static void Rush(List<List<SquareColor>> board){
             for (int i = 21; i >=0; i--){
                 for (int j = 9; j >=0; j--){
+                    if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
+                        GridDisplay.SetTickTime(0.01f);
+                    }
             }
         }
     }
@@ -75,3 +78,4 @@ public class Position{
         return false;
     }
 }
+// changer vitesse tick et changer aussi dans la création de la piece

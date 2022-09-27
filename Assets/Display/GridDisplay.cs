@@ -35,6 +35,10 @@ public class GridDisplay : MonoBehaviour
             Position.MoveR(board);
             SetColors(board);
         });
+        SetRushFunction(()=>{
+            Position.Rush(board);
+            SetColors(board);
+        });
             }
 
     // Paramètre la fonction devant être appelée à chaque tick.
