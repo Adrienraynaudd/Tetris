@@ -5,10 +5,10 @@ using UnityEngine;
 public class GridDisplay : MonoBehaviour
 {
     // Hauteur de la grille en nombre de cases
-    public int height = 22;
+    private int height = 22;
 
     // Largeur de la grille en nombre de cases
-    public int width = 10;
+    private int width = 10;
 
     // Cette fonction se lance au lancement du jeu, avant le premier affichage.
     public static void Initialize(){

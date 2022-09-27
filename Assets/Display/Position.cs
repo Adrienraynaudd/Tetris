@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Position{
-    public int posA;
-    public int posB;
+    private int posA;
+    private int posB;
     public static List<Position> PiecesTetris = new List<Position>();
     public Position(int posA, int posB){
         this.posA = posA;
         this.posB = posB;
     }
-        public static int index = 4;
+        private static int index = 4;
            public static  void DownPiece (List<List<SquareColor>> board){ // move the piece down
             for (int i = 21; i >=0; i--){
                 for (int j = 9; j >=0; j--){
@@ -79,7 +79,7 @@ public class Position{
         }
     }
 
-    public static bool Contain (int A , int B){ // check if the square is part of the piece
+    private static bool Contain (int A , int B){ // check if the square is part of the piece
         Position myPos = new Position(A,B);
         foreach (Position pos in PiecesTetris){
             if (pos.posA == myPos.posA && pos.posB == myPos.posB){
@@ -88,7 +88,7 @@ public class Position{
         }
         return false;
     }
-    public static void checkPiece(List<List<SquareColor>> board){ // check if the piece can be moved down
+    private static void checkPiece(List<List<SquareColor>> board){ // check if the piece can be moved down
         for (int i = 0; i <=21; i++){
                 for (int j = 0; j <=9; j++){
                     if (Contain(i,j) ){
