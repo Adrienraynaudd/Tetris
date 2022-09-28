@@ -11,6 +11,7 @@ public class Position{
         this.posB = posB;
     }
         private static int index = 4;
+        private static int score = 0;
            public static  void DownPiece (List<List<SquareColor>> board){ // move the piece down
             for (int i = 21; i >=0; i--){
                 for (int j = 9; j >=0; j--){
@@ -24,6 +25,7 @@ public class Position{
                             index++;
                             if (index >= 4){ // verifie if the piece can be moved down
                                 checkPiece(board);
+                                checkLigne(board);
                                 index =0;
                             }
                         }else {
@@ -102,5 +104,31 @@ public class Position{
                     }
             }
         }
+    }
+    private static void checkLigne(List<List<SquareColor>> board){ // check if there is a line to delete
+        int count = 0;
+        for (int i = 0; i <=21; i++){
+                for (int j = 0; j <=9; j++){
+                    if (board[i][j] != SquareColor.LIGHT_BLUE){
+                        count++;
+                    }
+            }
+            if (count == 10){
+                GridDisplay.SetScore(score+100);
+                for (int k = 0; k <=9; k++){
+                    board[i][k] = SquareColor.LIGHT_BLUE;
+                }
+                for (int l = i; l >=0; l--){
+                    for (int m = 0; m <=9; m++){
+                        if (board[l][m] != SquareColor.LIGHT_BLUE){
+                            board[l+1][m] = board[l][m];
+                            board[l][m] = SquareColor.LIGHT_BLUE;
+                        }
+                    }
+                }
+            }
+            count = 0;
+        }
+
     }
 }

@@ -20,6 +20,7 @@ public class GridDisplay : MonoBehaviour
             }
             board.Add(Ligne);
         }
+        SetTickTime(0.5f);
         SetColors(board); // Set the color of the squares
         Pieces.piece(board);// Create the first piece
         SetColors(board);
