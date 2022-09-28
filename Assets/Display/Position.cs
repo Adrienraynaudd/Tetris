@@ -114,7 +114,7 @@ public class Position{
                     }
             }
             if (count == 10){
-                GridDisplay.SetScore(score+100);
+                GridDisplay.SetScore(score+100); // add 100 points to the score
                 for (int k = 0; k <=9; k++){
                     board[i][k] = SquareColor.LIGHT_BLUE;
                 }
