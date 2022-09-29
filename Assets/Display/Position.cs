@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Position{
-    public int posA;
-    public int posB;
+    public int posY;
+    public int posX;
     public static List<Position> PiecesTetris = new List<Position>();
-    public Position(int posA, int posB){
-        this.posA = posA;
-        this.posB = posB;
+    public Position(int posY, int posX){
+        this.posY = posY;
+        this.posX = posX;
     }
         private static int index = 4;
         private static int score = 0;
@@ -24,8 +24,8 @@ public class Position{
                             board[i][j] = SquareColor.LIGHT_BLUE;
                             Position myPos = new Position(i,j);
                             foreach (Position pos in PiecesTetris){
-                                if (pos.posA == myPos.posA && pos.posB == myPos.posB){
-                                    pos.posA = pos.posA + 1;
+                                if (pos.posY == myPos.posY && pos.posX == myPos.posX){
+                                    pos.posY = pos.posY + 1;
                                          }
                                 }
                             index++;
@@ -58,8 +58,8 @@ public class Position{
                                 board[i][j] =SquareColor.LIGHT_BLUE;
                                  Position myPos = new Position(i,j);
                             foreach (Position pos in PiecesTetris){
-                                if (pos.posA == myPos.posA && pos.posB == myPos.posB){
-                                    pos.posB = pos.posB - 1;
+                                if (pos.posY == myPos.posY && pos.posX == myPos.posX){
+                                    pos.posX = pos.posX - 1;
                                          }
                                 }
                             }
@@ -77,8 +77,8 @@ public class Position{
                                 board[k][l] =SquareColor.LIGHT_BLUE;
                                  Position myPos = new Position(k,l);
                             foreach (Position pos in PiecesTetris){
-                                if (pos.posA == myPos.posA && pos.posB == myPos.posB){
-                                    pos.posB = pos.posB + 1;
+                                if (pos.posY == myPos.posY && pos.posX == myPos.posX){
+                                    pos.posX = pos.posX + 1;
                                          }
                                 }
                             }
@@ -99,7 +99,7 @@ public class Position{
     public static bool Contain (int A , int B){ // check if the square is part of the piece
         Position myPos = new Position(A,B);
         foreach (Position pos in PiecesTetris){
-            if (pos.posA == myPos.posA && pos.posB == myPos.posB){
+            if (pos.posY == myPos.posY && pos.posX == myPos.posX){
                 return true;
             }
         }
