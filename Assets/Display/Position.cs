@@ -81,7 +81,7 @@ public class Position{
         }
     }
 
-    private static bool Contain (int A , int B){ // check if the square is part of the piece
+    public static bool Contain (int A , int B){ // check if the square is part of the piece
         Position myPos = new Position(A,B);
         foreach (Position pos in PiecesTetris){
             if (pos.posA == myPos.posA && pos.posB == myPos.posB){
