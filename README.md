@@ -31,7 +31,7 @@ Ce projet nous à demander de démontrer  entre autres
 ## 🤖 **Technologies utilisées** :
 </br>
 
- <img src="https://www.sparks-formation.com/wp-content/uploads/2020/07/langage-c-sharp.png" width="50" height="50"> [C#](https://learn.microsoft.com/fr-fr/dotnet/csharp/)
+ <img src="https://www.sparks-formation.com/wp-content/uploads/2020/07/langage-c-sharp.png" width="50" height="50"> [C# Introduction](https://learn.microsoft.com/fr-fr/dotnet/csharp/)
 
 ***
 
@@ -47,6 +47,6 @@ Pour installer :
 
 ***
 ## 👨‍💻 Equipe :
->GUENARD Juliette
+>GUENARD Juliette  https://github.com/julietteGUE16
 
->RAYNAUD Adrien
+>RAYNAUD Adrien  https://github.com/Adrienraynaudd
