@@ -5,13 +5,13 @@ using UnityEngine;
 public class Pieces : MonoBehaviour
 {
     public static void  piece (List<List<SquareColor>> board){
-        int rand = Random.Range(1, 8); // choose a random number between 1 and 7
+        int rand = Random.Range(1, 1); // choose a random number between 1 and 7
         switch (rand){
             case 1:
                 Pieces.carre(board);
                 break;
             case 2:
-                Pieces.LeT(board);
+                Pieces.LeLG(board);
                 break;
             case 3:
                 Pieces.LeI(board);
@@ -20,7 +20,7 @@ public class Pieces : MonoBehaviour
                 Pieces.LeLD(board);
                 break;
             case 5:
-                Pieces.LeLG(board);
+                Pieces.LeT(board);
                 break;
             case 6:
                 Pieces.LeZD(board);
