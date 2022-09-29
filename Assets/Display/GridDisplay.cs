@@ -5,17 +5,17 @@ using UnityEngine;
 public class GridDisplay : MonoBehaviour
 {
     // Hauteur de la grille en nombre de cases
-    private int height = 22;
+    public static int height = 22;
 
     // Largeur de la grille en nombre de cases
-    private int width = 10;
+    public static int width = 10;
 
     // Cette fonction se lance au lancement du jeu, avant le premier affichage.
     public static void Initialize(){
         List<List<SquareColor>> board = new List<List<SquareColor>>(); // Creation background board
-        for (int i=0;i<22;i++){
+        for (int i=0;i<height;i++){
             List<SquareColor> Ligne = new List<SquareColor>();
-            for (int j = 0;j<10;j++){
+            for (int j = 0;j<width;j++){
                 Ligne.Add(SquareColor.LIGHT_BLUE);
             }
             board.Add(Ligne);
@@ -46,8 +46,8 @@ public class GridDisplay : MonoBehaviour
         });
             }
     private static int CheckPosition (List<List<SquareColor>> board){ // Check if the piece can be moved left or right
-        for (int i = 21; i >=0; i--){
-            for (int j = 9; j >=0; j--){
+        for (int i = height-1; i >=0; i--){
+            for (int j = width-1; j >=0; j--){
                 if ((j+1>9 ) && Position.Contain(i,j)){
                     return 1;
                 }

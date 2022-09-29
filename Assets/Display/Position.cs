@@ -12,9 +12,11 @@ public class Position{
     }
         private static int index = 4;
         private static int score = 0;
+        private static int Pheight = GridDisplay.height;
+        private static int Pwidth = GridDisplay.width;
            public static  void DownPiece (List<List<SquareColor>> board){ // move the piece down
-            for (int i = 21; i >=0; i--){
-                for (int j = 9; j >=0; j--){
+            for (int i = Pheight-1; i >=0; i--){
+                for (int j = Pwidth-1; j >=0; j--){
                     if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){ // if the square is not empty and if the square is part of the piece
                         if (i< 21){
                         if (board[i+1][j] == SquareColor.LIGHT_BLUE ){
@@ -25,7 +27,6 @@ public class Position{
                             index++;
                             if (index >= 4){ // verifie if the piece can be moved down
                                 checkPiece(board);
-                                checkLigne(board);
                                 index =0;
                             }
                         }else {
@@ -43,8 +44,8 @@ public class Position{
         }
     }
     public static void MoveL(List<List<SquareColor>> board){ // move the piece to the left
-            for (int i=0;i<22;i++){
-                        for (int j = 0;j<10;j++){
+            for (int i=0;i<Pheight;i++){
+                        for (int j = 0;j<Pwidth;j++){
                             if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
                                 if (board[i][j-1]== SquareColor.LIGHT_BLUE){
                                 board[i][j-1] = board[i][j];
@@ -58,8 +59,8 @@ public class Position{
         }
 
         public static void MoveR(List<List<SquareColor>> board){ // move the piece to the right
-            for (int k=0;k<22;k++){ //attention: here we go through the table from right to left so as not to fall on the box that we have just modified.
-                        for (int l = 9;l > -1;l--){
+            for (int k=0;k<Pheight;k++){
+                        for (int l = Pwidth-1;l > -1;l--){//Warning: here we go through the table from right to left so as not to fall on the box that we have just modified.
                             if (board[k][l] != SquareColor.LIGHT_BLUE && Contain(k,l)){
                                 if (board[k][l+1] == SquareColor.LIGHT_BLUE){
                                 board[k][l+1] = board[k][l];
@@ -72,8 +73,8 @@ public class Position{
                 }
         }
         public static void Rush(List<List<SquareColor>> board){ // move the piece to the bottom
-            for (int i = 21; i >=0; i--){
-                for (int j = 9; j >=0; j--){
+            for (int i = Pheight-1; i >=0; i--){
+                for (int j = Pwidth-1; j >=0; j--){
                     if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
                         GridDisplay.SetTickTime(0.01f);
                     }
@@ -91,11 +92,12 @@ public class Position{
         return false;
     }
     private static void checkPiece(List<List<SquareColor>> board){ // check if the piece can be moved down
-        for (int i = 0; i <=21; i++){
-                for (int j = 0; j <=9; j++){
+        for (int i = 0; i <=Pheight-1; i++){
+                for (int j = 0; j <=Pwidth-1; j++){
                     if (Contain(i,j) ){
                         if (i<21){
                             if (board[i+1][j] != SquareColor.LIGHT_BLUE && !Contain(i+1,j)){
+                                checkLigne(board);
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
                                 index =0;
@@ -107,19 +109,19 @@ public class Position{
     }
     private static void checkLigne(List<List<SquareColor>> board){ // check if there is a line to delete
         int count = 0;
-        for (int i = 0; i <=21; i++){
-                for (int j = 0; j <=9; j++){
+        for (int i = 0; i <=Pheight-1; i++){
+                for (int j = 0; j <=Pwidth-1; j++){
                     if (board[i][j] != SquareColor.LIGHT_BLUE){
                         count++;
                     }
             }
             if (count == 10){
                 GridDisplay.SetScore(score+100); // add 100 points to the score
-                for (int k = 0; k <=9; k++){
+                for (int k = 0; k <=Pwidth-1; k++){
                     board[i][k] = SquareColor.LIGHT_BLUE;
                 }
                 for (int l = i; l >=0; l--){
-                    for (int m = 0; m <=9; m++){
+                    for (int m = 0; m <=Pwidth-1; m++){
                         if (board[l][m] != SquareColor.LIGHT_BLUE){
                             board[l+1][m] = board[l][m];
                             board[l][m] = SquareColor.LIGHT_BLUE;
