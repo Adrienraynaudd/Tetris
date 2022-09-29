@@ -52,7 +52,7 @@ public class Position{
     public static void MoveL(List<List<SquareColor>> board){ // move the piece to the left
             for (int i=0;i<Pheight;i++){
                         for (int j = 0;j<Pwidth;j++){
-                            if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
+                            if (Contain(i,j)){
                                 if (board[i][j-1]== SquareColor.LIGHT_BLUE){
                                 board[i][j-1] = board[i][j];
                                 board[i][j] =SquareColor.LIGHT_BLUE;
@@ -71,7 +71,7 @@ public class Position{
         public static void MoveR(List<List<SquareColor>> board){ // move the piece to the right
             for (int k=0;k<Pheight;k++){
                         for (int l = Pwidth-1;l > -1;l--){//Warning: here we go through the table from right to left so as not to fall on the box that we have just modified.
-                            if (board[k][l] != SquareColor.LIGHT_BLUE && Contain(k,l)){
+                            if (Contain(k,l)){
                                 if (board[k][l+1] == SquareColor.LIGHT_BLUE){
                                 board[k][l+1] = board[k][l];
                                 board[k][l] =SquareColor.LIGHT_BLUE;
@@ -89,7 +89,7 @@ public class Position{
         public static void Rush(List<List<SquareColor>> board){ // move the piece to the bottom
             for (int i = Pheight-1; i >=0; i--){
                 for (int j = Pwidth-1; j >=0; j--){
-                    if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){
+                    if (Contain(i,j)){
                         GridDisplay.SetTickTime(0.01f);
                     }
             }
@@ -126,8 +126,7 @@ public class Position{
                 for (int j = 0; j <=Pwidth-1; j++){
                     if (board[i][j] == SquareColor.LIGHT_BLUE){
                         break;
-                    }
-                    if (j == Pwidth-1){
+                    }else if (j == Pwidth-1){
                         for (int k = 0; k <=Pwidth-1; k++){
                             board[i][k] = SquareColor.LIGHT_BLUE;
                         }
