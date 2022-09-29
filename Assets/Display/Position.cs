@@ -67,7 +67,7 @@ public class Position{
                                 if (board[k][l+1] == SquareColor.LIGHT_BLUE){
                                 board[k][l+1] = board[k][l];
                                 board[k][l] =SquareColor.LIGHT_BLUE;
-                                 PiecesTetris.Remove(new Position(k,l));
+                                 PiecesTetris.Remove( new Position(k,l));
                                 PiecesTetris.Add(new Position(k,l+1));
                                 }
                                 }
