@@ -29,13 +29,13 @@ public class GridDisplay : MonoBehaviour
             SetColors(board);
         });
         SetMoveLeftFunction(()=>{ // We define the function that will be called when the left arrow is pressed
-        if (CheckPosition(board) ){
+        if (CheckPosition(board) !=2 ){
             Position.MoveL(board);
             SetColors(board);
         }
         });
         SetMoveRightFunction(()=>{ // We define the function that will be called when the right arrow is pressed
-        if (CheckPosition(board) ){
+        if (CheckPosition(board) !=1 ){
             Position.MoveR(board);
             SetColors(board);
         }
@@ -45,15 +45,18 @@ public class GridDisplay : MonoBehaviour
             SetColors(board);
         });
             }
-    private static bool CheckPosition (List<List<SquareColor>> board){ // Check if the piece can be moved left or right
+    private static int CheckPosition (List<List<SquareColor>> board){ // Check if the piece can be moved left or right
         for (int i = 21; i >=0; i--){
             for (int j = 9; j >=0; j--){
-                if ((j+1>10 || j-1<0) && Position.Contain(i,j)){
-                    return false;
+                if ((j+1>9 ) && Position.Contain(i,j)){
+                    return 1;
+                }
+                if ((j-1<0 ) && Position.Contain(i,j)){
+                    return 2;
                 }
             }
         }
-        return true;
+        return 0;
     }
     // Paramètre la fonction devant être appelée à chaque tick.
     // C'est ici que le gros de la logique temporelle de votre jeu aura lieu!
