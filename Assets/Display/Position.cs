@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Position{
-    private int posA;
-    private int posB;
+    public int posA;
+    public int posB;
     public static List<Position> PiecesTetris = new List<Position>();
     public Position(int posA, int posB){
         this.posA = posA;
@@ -22,8 +22,12 @@ public class Position{
                         if (board[i+1][j] == SquareColor.LIGHT_BLUE ){
                             board[i+1][j] = board[i][j];
                             board[i][j] = SquareColor.LIGHT_BLUE;
-                            PiecesTetris.Add(new Position(i+1,j));
-                            PiecesTetris.Remove(new Position(i,j));
+                            Position myPos = new Position(i,j);
+                            foreach (Position pos in PiecesTetris){
+                                if (pos.posA == myPos.posA && pos.posB == myPos.posB){
+                                    pos.posA = pos.posA + 1;
+                                         }
+                                }
                             index++;
                             if (index >= 4){ // verifie if the piece can be moved down
                                 checkPiece(board);
@@ -52,8 +56,12 @@ public class Position{
                                 if (board[i][j-1]== SquareColor.LIGHT_BLUE){
                                 board[i][j-1] = board[i][j];
                                 board[i][j] =SquareColor.LIGHT_BLUE;
-                                 PiecesTetris.Remove(new Position(i,j));
-                                PiecesTetris.Add(new Position(i,j-1));
+                                 Position myPos = new Position(i,j);
+                            foreach (Position pos in PiecesTetris){
+                                if (pos.posA == myPos.posA && pos.posB == myPos.posB){
+                                    pos.posB = pos.posB - 1;
+                                         }
+                                }
                                 }
                                 }
                 }
@@ -67,8 +75,12 @@ public class Position{
                                 if (board[k][l+1] == SquareColor.LIGHT_BLUE){
                                 board[k][l+1] = board[k][l];
                                 board[k][l] =SquareColor.LIGHT_BLUE;
-                                 PiecesTetris.Remove( new Position(k,l));
-                                PiecesTetris.Add(new Position(k,l+1));
+                                 Position myPos = new Position(k,l);
+                            foreach (Position pos in PiecesTetris){
+                                if (pos.posA == myPos.posA && pos.posB == myPos.posB){
+                                    pos.posB = pos.posB + 1;
+                                         }
+                                }
                                 }
                                 }
                 }

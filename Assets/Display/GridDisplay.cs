@@ -9,6 +9,7 @@ public class GridDisplay : MonoBehaviour
 
     // Largeur de la grille en nombre de cases
     public static int width = 10;
+    private static int check = 0;
 
     // Cette fonction se lance au lancement du jeu, avant le premier affichage.
     public static void Initialize(){
@@ -32,12 +33,14 @@ public class GridDisplay : MonoBehaviour
         if (CheckPosition(board) !=2 ){
             Position.MoveL(board);
             SetColors(board);
+            CheckPosition(board);
         }
         });
         SetMoveRightFunction(()=>{ // We define the function that will be called when the right arrow is pressed
         if (CheckPosition(board) !=1 ){
             Position.MoveR(board);
             SetColors(board);
+            CheckPosition(board);
         }
         });
         SetRushFunction(()=>{ // We define the function that will be called when the down arrow is pressed
@@ -49,10 +52,11 @@ public class GridDisplay : MonoBehaviour
         for (int i = height-1; i >=0; i--){
             for (int j = width-1; j >=0; j--){
                 if ((j+1>9 || (board[i][j+1] != SquareColor.LIGHT_BLUE && !Position.Contain(i,j+1)) ) && Position.Contain(i,j)){
-                    return 1;
-                }
-                if ((j-1<0 || (board[i][j-1] != SquareColor.LIGHT_BLUE && !Position.Contain(i,j-1)) ) && Position.Contain(i,j)){
-                    return 2;
+                    check = 1;
+                    return check;
+                }else if ((j-1<0 || (board[i][j-1] != SquareColor.LIGHT_BLUE && !Position.Contain(i,j-1)) ) && Position.Contain(i,j)){
+                    check = 2;
+                    return check;
                 }
             }
         }
