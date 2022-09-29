@@ -48,10 +48,10 @@ public class GridDisplay : MonoBehaviour
     private static int CheckPosition (List<List<SquareColor>> board){ // Check if the piece can be moved left or right
         for (int i = height-1; i >=0; i--){
             for (int j = width-1; j >=0; j--){
-                if ((j+1>9 ) && Position.Contain(i,j)){
+                if ((j+1>9 || (board[i][j+1] != SquareColor.LIGHT_BLUE && !Position.Contain(i,j+1)) ) && Position.Contain(i,j)){
                     return 1;
                 }
-                if ((j-1<0 ) && Position.Contain(i,j)){
+                if ((j-1<0 || (board[i][j-1] != SquareColor.LIGHT_BLUE && !Position.Contain(i,j-1)) ) && Position.Contain(i,j)){
                     return 2;
                 }
             }
