@@ -30,11 +30,13 @@ public class Position{
                                 index =0;
                             }
                         }else {
+                                checkLigne(board);
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
                                 index =0;
                         }
                     }else {
+                                checkLigne(board);
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
                                 index =0;
@@ -108,29 +110,27 @@ public class Position{
         }
     }
     private static void checkLigne(List<List<SquareColor>> board){ // check if there is a line to delete
-        int count = 0;
         for (int i = 0; i <=Pheight-1; i++){
                 for (int j = 0; j <=Pwidth-1; j++){
-                    if (board[i][j] != SquareColor.LIGHT_BLUE){
-                        count++;
+                    if (board[i][j] == SquareColor.LIGHT_BLUE){
+                        break;
                     }
-            }
-            if (count == 10){
-                GridDisplay.SetScore(score+100); // add 100 points to the score
-                for (int k = 0; k <=Pwidth-1; k++){
-                    board[i][k] = SquareColor.LIGHT_BLUE;
-                }
-                for (int l = i; l >=0; l--){
-                    for (int m = 0; m <=Pwidth-1; m++){
-                        if (board[l][m] != SquareColor.LIGHT_BLUE){
-                            board[l+1][m] = board[l][m];
-                            board[l][m] = SquareColor.LIGHT_BLUE;
+                    if (j == Pwidth-1){
+                        for (int k = 0; k <=Pwidth-1; k++){
+                            board[i][k] = SquareColor.LIGHT_BLUE;
+                        }
+                        score = score+100;
+                        GridDisplay.SetScore(score);
+                        for (int l = i; l >=0; l--){
+                            for (int m = 0; m <=Pwidth-1; m++){
+                                if (board[l][m] != SquareColor.LIGHT_BLUE){
+                                    board[l+1][m] = board[l][m];
+                                    board[l][m] = SquareColor.LIGHT_BLUE;
+                                }
+                            }
                         }
                     }
-                }
             }
-            count = 0;
         }
-
     }
 }
