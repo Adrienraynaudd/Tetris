@@ -8,5 +8,7 @@ public enum SquareColor {
     PURPLE,
     RED,
     TRANSPARENT,
+    PINK,
 }
+
 
