@@ -62,10 +62,10 @@ public class Position{
                                     pos.posB = pos.posB - 1;
                                          }
                                 }
-                                }
-                                }
+                            }
+                        }
                 }
-                }
+            }
         }
 
         public static void MoveR(List<List<SquareColor>> board){ // move the piece to the right
@@ -81,10 +81,10 @@ public class Position{
                                     pos.posB = pos.posB + 1;
                                          }
                                 }
-                                }
-                                }
+                            }
+                        }
                 }
-                }
+            }
         }
         public static void Rush(List<List<SquareColor>> board){ // move the piece to the bottom
             for (int i = Pheight-1; i >=0; i--){
