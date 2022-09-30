@@ -165,8 +165,8 @@ public class Position{
             }
         int middleY = (ymin +ymax)/2;
         int middleX = (xmin +xmax)/2;
-        List<Position> NewPiecesTetris = new List<Position>(); //une liste des nouvelles positions de la pièces tournée.
-        SquareColor color = board[PiecesTetris[0].posY][PiecesTetris[0].posX]; //ici je récupère la couleur de la pièce tombante.
+        List<Position> NewPiecesTetris = new List<Position>(); //a list of the new positions of the turned piece.
+        SquareColor color = board[PiecesTetris[0].posY][PiecesTetris[0].posX]; //here I get the color of the falling piece.
         foreach(Position item in PiecesTetris){
             int newY = middleY +(item.posX - middleX);
             int newX = middleX -(item.posY - middleY);
@@ -175,7 +175,7 @@ public class Position{
             NewPiecesTetris.Add(new Position (newY,newX));
             }
             PiecesTetris = NewPiecesTetris; 
-            foreach(Position item in PiecesTetris){ // Je m'assure de bien colorer mes nouvelles positions.
+            foreach(Position item in PiecesTetris){ //I make sure to color my new positions well.
                 board[item.posY][item.posX] = color;
             }
 
