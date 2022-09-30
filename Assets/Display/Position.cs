@@ -149,7 +149,6 @@ public class Position{
         int ymin = 99;
         int xmax = 0;
         int ymax = 0;
-        //(xmin,ymin)
         foreach(Position item in PiecesTetris){
             if (item.posY < ymin){
                 ymin = item.posY;
@@ -164,58 +163,22 @@ public class Position{
                 xmax = item.posX;
             }
             }
-        UnityEngine.Debug.Log(xmin);
-        UnityEngine.Debug.Log(xmax);
-        UnityEngine.Debug.Log(ymin);
-        UnityEngine.Debug.Log(ymax);
         int middleY = (ymin +ymax)/2;
         int middleX = (xmin +xmax)/2;
-        UnityEngine.Debug.Log(middleY);
-        UnityEngine.Debug.Log(middleX);
+        List<Position> NewPiecesTetris = new List<Position>(); //une liste des nouvelles positions de la pièces tournée.
+        SquareColor color = board[PiecesTetris[0].posY][PiecesTetris[0].posX]; //ici je récupère la couleur de la pièce tombante.
         foreach(Position item in PiecesTetris){
             int newY = middleY +(item.posX - middleX);
             int newX = middleX -(item.posY - middleY);
-            SquareColor color = board[item.posY][item.posX];
             board[item.posY][item.posX] = SquareColor.LIGHT_BLUE;
             board[newY][newX] = color;
-            item.posY = newY;
-            item.posX = newX;
+            NewPiecesTetris.Add(new Position (newY,newX));
             }
-        /*if (board[xmin][ymin] != SquareColor.YELLOW && board[xmin][ymin] != SquareColor.DEEP_BLUE){
-            for (int i=0;i<4;i++){
-            List<bool> Ligne = new List<bool>();
-            for (int j = 0;j<4;j++){
-                if (board[xmin+i][ymin+j] != SquareColor.LIGHT_BLUE){
-                    Ligne.Add(true);
-                }else{
-                    Ligne.Add(true);
-                }
+            PiecesTetris = NewPiecesTetris; 
+            foreach(Position item in PiecesTetris){ // Je m'assure de bien colorer mes nouvelles positions.
+                board[item.posY][item.posX] = color;
             }
-            intermediatePiecesTetris.Add(Ligne);
-        }
 
-        for (int i=0;i<4;i++){
-            for (int j = 0;j<4;j++){
-                List<List<bool>> Tampon = intermediatePiecesTetris[i][j];
-                intermediatePiecesTetris[i][j]=intermediatePiecesTetris[j][i];
-                intermediatePiecesTetris[j][i] = Tampon;
-            }
-        }*/
-
-        
-        /*Position.PiecesTetris.Add(new Position (0,3));
-        Position.PiecesTetris.Add(new Position (0,4));
-        Position.PiecesTetris.Add(new Position (1,4));
-        Position.PiecesTetris.Add(new Position (1,5));*/
-        /*foreach(Position item in PiecesTetris){
-                                int stock = item.posA;
-                                if (item.posA != 1-(item.posB-1)){
-                                    board[item.posA][item.posB] = SquareColor.LIGHT_BLUE;
-                                }
-                                board[item.posA][item.posB] = SquareColor.LIGHT_BLUE;
-                                item.posA = 1-(item.posB-1);
-                                item.posB = stock;
-                                board[item.posA][item.posB] = SquareColor.RED;
-                            }*/
+            //TODO : Regler le décalage lier aux int qui arrondissent décale le centre legerment vers la gauche.
     }
 }
