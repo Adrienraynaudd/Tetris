@@ -14,7 +14,7 @@ public class Position{
         private static int score = 0;
         private static int Pheight = GridDisplay.height;
         private static int Pwidth = GridDisplay.width;
-           public static  void DownPiece (List<List<SquareColor>> board){ // move the piece down
+            public static  void DownPiece (List<List<SquareColor>> board){ // move the piece down
             for (int i = Pheight-1; i >=0; i--){
                 for (int j = Pwidth-1; j >=0; j--){
                     if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){ // if the square is not empty and if the square is part of the piece
@@ -49,7 +49,7 @@ public class Position{
             }
         }
     }
-    public static void MoveL(List<List<SquareColor>> board){ // move the piece to the left
+     public static void MoveL(List<List<SquareColor>> board){ // move the piece to the left
             for (int i=0;i<Pheight;i++){
                         for (int j = 0;j<Pwidth;j++){
                             if (Contain(i,j)){
@@ -86,7 +86,7 @@ public class Position{
                 }
             }
         }
-        public static void Rush(List<List<SquareColor>> board){ // move the piece to the bottom
+    public static void Rush(List<List<SquareColor>> board){ // move the piece to the bottom
             for (int i = Pheight-1; i >=0; i--){
                 for (int j = Pwidth-1; j >=0; j--){
                     if (Contain(i,j)){
@@ -143,5 +143,42 @@ public class Position{
                     }
             }
         }
+    }
+    public static void Rotate(List<List<SquareColor>> board){
+        int xmin = 99;
+        int ymin = 99;
+        int xmax = 0;
+        int ymax = 0;
+        foreach(Position item in PiecesTetris){
+            if (item.posY < ymin){
+                ymin = item.posY;
+            }
+            if (item.posX < xmin){
+                xmin = item.posX;
+            }
+             if (item.posY > ymax){
+                ymax = item.posY;
+            }
+             if (item.posX > xmax){
+                xmax = item.posX;
+            }
+            }
+        int middleY = (ymin +ymax)/2;
+        int middleX = (xmin +xmax)/2;
+        List<Position> NewPiecesTetris = new List<Position>(); //une liste des nouvelles positions de la pièces tournée.
+        SquareColor color = board[PiecesTetris[0].posY][PiecesTetris[0].posX]; //ici je récupère la couleur de la pièce tombante.
+        foreach(Position item in PiecesTetris){
+            int newY = middleY +(item.posX - middleX);
+            int newX = middleX -(item.posY - middleY);
+            board[item.posY][item.posX] = SquareColor.LIGHT_BLUE;
+            board[newY][newX] = color;
+            NewPiecesTetris.Add(new Position (newY,newX));
+            }
+            PiecesTetris = NewPiecesTetris; 
+            foreach(Position item in PiecesTetris){ // Je m'assure de bien colorer mes nouvelles positions.
+                board[item.posY][item.posX] = color;
+            }
+
+            //TODO : Regler le décalage lier aux int qui arrondissent décale le centre legerment vers la gauche.
     }
 }

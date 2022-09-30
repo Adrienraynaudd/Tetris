@@ -47,6 +47,10 @@ public class GridDisplay : MonoBehaviour
             Position.Rush(board);
             SetColors(board);
         });
+        SetRotateFunction(()=>{ // We define the function that will be called when the down arrow is pressed
+            Position.Rotate(board);
+            SetColors(board);
+        });
             }
     private static int CheckPosition (List<List<SquareColor>> board){ // Check if the piece can be moved left or right
         for (int i = height-1; i >=0; i--){
