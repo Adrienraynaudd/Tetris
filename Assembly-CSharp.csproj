@@ -36,11 +36,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Display\Pieces.cs" />
      <Compile Include="Assets\Internal\_GridDisplay.cs" />
      <Compile Include="Assets\Display\SquareColor.cs" />
      <Compile Include="Assets\Display\Pieces.cs" />
-     <Compile Include="Assets\Display\Position.cs" />
      <Compile Include="Assets\Internal\_Square.cs" />
      <Compile Include="Assets\Display\Position.cs" />
      <Compile Include="Assets\Display\GridDisplay.cs" />

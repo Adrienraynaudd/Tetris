@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Position{
-    private int posA;
-    private int posB;
+    private int posA; //Y 
+    private int posB; //X
     public static List<Position> PiecesTetris = new List<Position>();
     public Position(int posA, int posB){
         this.posA = posA;
@@ -67,7 +67,7 @@ public class Position{
                                 if (board[k][l+1] == SquareColor.LIGHT_BLUE){
                                 board[k][l+1] = board[k][l];
                                 board[k][l] =SquareColor.LIGHT_BLUE;
-                                 PiecesTetris.Remove(new Position(k,l));
+                                PiecesTetris.Remove(new Position(k,l));
                                 PiecesTetris.Add(new Position(k,l+1));
                                 }
                                 }
@@ -132,5 +132,77 @@ public class Position{
                     }
             }
         }
+    }
+    public static void Rotate(List<List<SquareColor>> board){
+        int xmin = 99;
+        int ymin = 99;
+        int xmax = 0;
+        int ymax = 0;
+        //(xmin,ymin)
+        foreach(Position item in PiecesTetris){
+            if (item.posA < xmin){
+                xmin = item.posA;
+            }
+            if (item.posB < ymin){
+                ymin = item.posB;
+            }
+             if (item.posA > xmax){
+                xmax = item.posA;
+            }
+             if (item.posB > ymax){
+                ymax = item.posB;
+            }
+            }
+        int middleX = (xmin +xmax)/2;
+        int middleY = (ymin +ymax)/2;
+        foreach(Position item in PiecesTetris){
+            int newY = middleY +(item.posA - middleX);
+            int newX = middleX -(item.posB - middleY);
+            SquareColor color = board[item.posA][item.posB];
+            //board[item.posA][item.posB] = SquareColor.LIGHT_BLUE;
+            board[newX][newY] = color;
+            item.posA = newX;
+            item.posB = newY;
+            }
+            foreach(Position item in PiecesTetris){
+                UnityEngine.Debug.Log(item.posA);
+                UnityEngine.Debug.Log(item.posB);
+            }
+        /*if (board[xmin][ymin] != SquareColor.YELLOW && board[xmin][ymin] != SquareColor.DEEP_BLUE){
+            for (int i=0;i<4;i++){
+            List<bool> Ligne = new List<bool>();
+            for (int j = 0;j<4;j++){
+                if (board[xmin+i][ymin+j] != SquareColor.LIGHT_BLUE){
+                    Ligne.Add(true);
+                }else{
+                    Ligne.Add(true);
+                }
+            }
+            intermediatePiecesTetris.Add(Ligne);
+        }
+
+        for (int i=0;i<4;i++){
+            for (int j = 0;j<4;j++){
+                List<List<bool>> Tampon = intermediatePiecesTetris[i][j];
+                intermediatePiecesTetris[i][j]=intermediatePiecesTetris[j][i];
+                intermediatePiecesTetris[j][i] = Tampon;
+            }
+        }*/
+
+        
+        /*Position.PiecesTetris.Add(new Position (0,3));
+        Position.PiecesTetris.Add(new Position (0,4));
+        Position.PiecesTetris.Add(new Position (1,4));
+        Position.PiecesTetris.Add(new Position (1,5));*/
+        /*foreach(Position item in PiecesTetris){
+                                int stock = item.posA;
+                                if (item.posA != 1-(item.posB-1)){
+                                    board[item.posA][item.posB] = SquareColor.LIGHT_BLUE;
+                                }
+                                board[item.posA][item.posB] = SquareColor.LIGHT_BLUE;
+                                item.posA = 1-(item.posB-1);
+                                item.posB = stock;
+                                board[item.posA][item.posB] = SquareColor.RED;
+                            }*/
     }
 }

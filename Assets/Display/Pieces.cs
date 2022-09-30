@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pieces : MonoBehaviour
 {
     public static void  piece (List<List<SquareColor>> board){
-        int rand = Random.Range(1, 1); // choose a random number between 1 and 7
+        int rand = Random.Range(4, 5); // choose a random number between 1 and 7
         switch (rand){
             case 1:
                 Pieces.carre(board);

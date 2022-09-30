@@ -20,27 +20,48 @@ public class GridDisplay : MonoBehaviour
             }
             board.Add(Ligne);
         }
+        SetTickTime(0.5f);
+        SetColors(board); // Set the color of the squares
+        Pieces.piece(board);// Create the first piece
         SetColors(board);
-        Pieces.piece(board);
-        SetColors(board);
-        SetTickFunction (() =>  {
+        SetTickFunction (() =>  { // We define the function that will be called at each tick
             Position.DownPiece(board);
             SetColors(board);
         });
-        SetMoveLeftFunction(()=>{
+        SetMoveLeftFunction(()=>{ // We define the function that will be called when the left arrow is pressed
+        if (CheckPosition(board) !=2 ){
             Position.MoveL(board);
             SetColors(board);
+        }
         });
-        SetMoveRightFunction(()=>{
+        SetMoveRightFunction(()=>{ // We define the function that will be called when the right arrow is pressed
+        if (CheckPosition(board) !=1 ){
             Position.MoveR(board);
             SetColors(board);
+        }
         });
-        SetRotateFunction(()=>{
+        SetRushFunction(()=>{ // We define the function that will be called when the down arrow is pressed
+            Position.Rush(board);
+            SetColors(board);
+        });
+        SetRotateFunction(()=>{ // We define the function that will be called when the down arrow is pressed
             Position.Rotate(board);
             SetColors(board);
         });
             }
-
+    private static int CheckPosition (List<List<SquareColor>> board){ // Check if the piece can be moved left or right
+        for (int i = height-1; i >=0; i--){
+            for (int j = width-1; j >=0; j--){
+                if ((j+1>9 ) && Position.Contain(i,j)){
+                    return 1;
+                }
+                if ((j-1<0 ) && Position.Contain(i,j)){
+                    return 2;
+                }
+            }
+        }
+        return 0;
+    }
     // Paramètre la fonction devant être appelée à chaque tick.
     // C'est ici que le gros de la logique temporelle de votre jeu aura lieu!
     // Cette fonction peut être une méthode d'une autre classe
