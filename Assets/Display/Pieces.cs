@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Pieces : MonoBehaviour
 {
+    private static int fixeRandom = 0;
     public static void  piece (List<List<SquareColor>> board){
-        int rand = Random.Range(1, 8); // choose a random number between 1 and 7
+         int rand = Random.Range(1, 8); // choose a random number between 1 and 7
+        while (fixeRandom == rand){ // if the random number is the same as the previous one, choose another one
+            rand = Random.Range(1,8);
+        }
+        fixeRandom = rand;
         switch (rand){
             case 1:
                 Pieces.carre(board);
