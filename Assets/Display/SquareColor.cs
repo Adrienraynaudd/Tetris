@@ -11,4 +11,3 @@ public enum SquareColor {
     PINK,
 }
 
-
