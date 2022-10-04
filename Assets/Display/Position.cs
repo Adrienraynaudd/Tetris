@@ -163,14 +163,15 @@ public class Position{
                 xmax = item.posX;
             }
             }
+        if (xmin != 0 && xmax != 9 ){ // empêcher la rotation sur le bords !
         int middleY = (ymin +ymax)/2;
         int middleX = (xmin +xmax)/2;
-        List<Position> NewPiecesTetris = new List<Position>(); //une liste des nouvelles positions de la pièces tournée.
+        List<Position> NewPiecesTetris = new List<Position>(); //une liste des nouvelles positions de la pièce tournée.
         SquareColor color = board[PiecesTetris[0].posY][PiecesTetris[0].posX]; //ici je récupère la couleur de la pièce tombante.
         foreach(Position item in PiecesTetris){
             int newY = middleY +(item.posX - middleX);
             int newX = middleX -(item.posY - middleY);
-            board[item.posY][item.posX] = SquareColor.LIGHT_BLUE;
+            board[item.posY][item.posX-1] = SquareColor.LIGHT_BLUE ;
             board[newY][newX] = color;
             NewPiecesTetris.Add(new Position (newY,newX));
             }
@@ -180,5 +181,6 @@ public class Position{
             }
 
             //TODO : Regler le décalage lier aux int qui arrondissent décale le centre legerment vers la gauche.
+        }
     }
 }
