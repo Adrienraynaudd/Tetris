@@ -11,8 +11,8 @@ public class Position{
         this.posX = posX;
     }
         public static int index = 4;
-        private static int Pheight = GridDisplay.height;
-        private static int Pwidth = GridDisplay.width;
+        protected static int Pheight = GridDisplay.height;
+        protected static int Pwidth = GridDisplay.width;
             public static  void DownPiece (List<List<SquareColor>> board){// move the piece down
             for (int i = Pheight-1; i >=0; i--){
                 for (int j = Pwidth-1; j >=0; j--){
