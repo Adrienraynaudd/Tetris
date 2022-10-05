@@ -1,52 +1,53 @@
 ***
-# **TETRIS Project**
+# **TETRIS Project** 
+</br> [![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](http://forthebadge.com)    [![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](http://forthebadge.com)   <img src="https://zupimages.net/up/22/40/8lld.png" width= "223" height= "36">
 
 ***
 
-## **Introduction :**
-Let's introduce ourselves ! We are : **GUENARD Juliette**, **RAYNAUD Adrien** and we're this game's developers.
+## **Introduction**
+Let's introduce ourselves ! We are : **GUENARD Juliette**, **RAYNAUD Adrien** and we are this game's developers.
 Our main goal was to create a C# Tetris with an Unity Interface (provided by teachers).
-This project allow us those following notions :
+This project required a mastery of those following notions :
 - Project'management
-- La maîtrise de la syntaxe C#
-- La maîtrise de la programmation orientée objet
-- La construction d'algorithmes complexes
-- La gestion de version avec Git
-- L'utilisation d'une bibliothèque fournie et manipulation de références
+- C# syntaxis
+- Object-oriented programming
+- complex algorithms building
+- Github
+- provided dictionnary using and referencies manipulation
 ***
 
-## **Objectif du projet :**
+## **Project aims**
 
-1- Mise en place d'un tableau de jeu
-2- Mise en place des pièces
-3- Mise en place des mouvements
-4- Mise en place des rotations
-5- Mise en place de la gravité
-6- Mise en place de la gestion des lignes
-7- Mise en place de la fin de partie
-8- Mise en place de la gestion des scores
+1- Setting up a game board</br>
+2- Setting up the pieces</br>
+3- Setting up the movements</br>
+4- Setting up rotations</br>
+5- Implementation of gravity</br>
+6- Implementation of line management</br>
+7- Setting up the endgame</br>
+8- Implementation of score management</br>
 
 ***
 
-## 🤖 **Technologies utilisées** :
+## 🤖 **Technologies** 
+- [Visual Studio code](https://code.visualstudio.com/) : our developement environment !
+- The programming language : [C#](https://learn.microsoft.com/fr-fr/dotnet/csharp/)
+- A cross-platform game engine : [UNITY](https://unity.com/)
+
+***
+
+## 💻 **How does our game works ?**
 </br>
-
- <img src="https://www.sparks-formation.com/wp-content/uploads/2020/07/langage-c-sharp.png" width="50" height="50"> [C# Introduction](https://learn.microsoft.com/fr-fr/dotnet/csharp/)
-
-***
-
-## 💻 **Comment fonctionne-t-il :**
-</br>
-Notre site fonctionne avec le langage C# et Unity. Il est composé de plusieurs scripts qui sont reliés entre eux.
-Pour installer :
+Our game works with the C# language and Unity. It's composed with several scripts linked together.</br>
+To install :
 
 > git clone https://github.com/Adrienraynaudd/Tetris
 
-- Ouvrir le dossier Tetris avec Unity Hub
-- Cliquer sur le bouton play
+- Open our Tetris folder with Unity Hub
+- Click on pLay
 
 ***
-## 👨‍💻 Equipe :
+## 👨‍💻 TEAM
 >GUENARD Juliette  https://github.com/julietteGUE16
 
 >RAYNAUD Adrien  https://github.com/Adrienraynaudd
