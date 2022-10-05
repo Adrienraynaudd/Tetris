@@ -9,7 +9,7 @@ public class GridDisplay : MonoBehaviour
 
     // Largeur de la grille en nombre de cases
     public static int width = 10;
-    private static int check = 0;
+    public static int check = 0;
 
     // Cette fonction se lance au lancement du jeu, avant le premier affichage.
     public static void Initialize(){
@@ -30,17 +30,17 @@ public class GridDisplay : MonoBehaviour
             SetColors(board);
         });
         SetMoveLeftFunction(()=>{ // We define the function that will be called when the left arrow is pressed
-        if (CheckPosition(board) !=2 ){
+        if (Check.CheckPosition(board) !=2 ){
             Position.MoveL(board);
             SetColors(board);
-            CheckPosition(board);
+            Check.CheckPosition(board);
         }
         });
         SetMoveRightFunction(()=>{ // We define the function that will be called when the right arrow is pressed
-        if (CheckPosition(board) !=1 ){
+        if (Check.CheckPosition(board) !=1 ){
             Position.MoveR(board);
             SetColors(board);
-            CheckPosition(board);
+            Check.CheckPosition(board);
         }
         });
         SetRushFunction(()=>{ // We define the function that will be called when the down arrow is pressed
@@ -52,20 +52,6 @@ public class GridDisplay : MonoBehaviour
             SetColors(board);
         });
             }
-    private static int CheckPosition (List<List<SquareColor>> board){ // Check if the piece can be moved left or right
-        for (int i = height-1; i >=0; i--){
-            for (int j = width-1; j >=0; j--){
-                if ((j+1>9 || (board[i][j+1] != SquareColor.BACKGROUND && !Position.Contain(i,j+1)) ) && Position.Contain(i,j)){
-                    check = 1;
-                    return check;
-                }else if ((j-1<0 || (board[i][j-1] != SquareColor.BACKGROUND && !Position.Contain(i,j-1)) ) && Position.Contain(i,j)){
-                    check = 2;
-                    return check;
-                }
-            }
-        }
-        return 0;
-    }
     // Paramètre la fonction devant être appelée à chaque tick.
     // C'est ici que le gros de la logique temporelle de votre jeu aura lieu!
     // Cette fonction peut être une méthode d'une autre classe
