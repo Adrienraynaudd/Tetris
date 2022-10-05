@@ -28,7 +28,7 @@ public class Position{
                                          }
                                 }
                             index++;
-                            if (index >= 4){ // verifie if the piece can be moved down
+                            if (index >= 4){ // check if the piece can be moved down
                                 Check.checkPiece(board);
                                 index =0;
                             }
