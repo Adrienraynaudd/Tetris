@@ -17,11 +17,11 @@ public class Position{
             public static  void DownPiece (List<List<SquareColor>> board){// move the piece down
             for (int i = Pheight-1; i >=0; i--){
                 for (int j = Pwidth-1; j >=0; j--){
-                    if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){ // if the square is not empty and if the square is part of the piece
+                    if (board[i][j] != SquareColor.BACKGROUND && Contain(i,j)){ // if the square is not empty and if the square is part of the piece
                         if (i< 21){
-                        if (board[i+1][j] == SquareColor.LIGHT_BLUE ){
+                        if (board[i+1][j] == SquareColor.BACKGROUND ){
                             board[i+1][j] = board[i][j];
-                            board[i][j] = SquareColor.LIGHT_BLUE;
+                            board[i][j] = SquareColor.BACKGROUND;
                             Position myPos = new Position(i,j);
                             foreach (Position pos in PiecesTetris){
                                 if (pos.posY == myPos.posY && pos.posX == myPos.posX){
@@ -53,9 +53,9 @@ public class Position{
             for (int i=0;i<Pheight;i++){
                         for (int j = 0;j<Pwidth;j++){
                             if (Contain(i,j)){
-                                if (board[i][j-1]== SquareColor.LIGHT_BLUE){
+                                if (board[i][j-1]== SquareColor.BACKGROUND){
                                 board[i][j-1] = board[i][j];
-                                board[i][j] =SquareColor.LIGHT_BLUE;
+                                board[i][j] =SquareColor.BACKGROUND;
                                  Position myPos = new Position(i,j);
                             foreach (Position pos in PiecesTetris){
                                 if (pos.posY == myPos.posY && pos.posX == myPos.posX){
@@ -72,9 +72,9 @@ public class Position{
             for (int k=0;k<Pheight;k++){
                         for (int l = Pwidth-1;l > -1;l--){//Warning: here we go through the table from right to left so as not to fall on the box that we have just modified.
                             if (Contain(k,l)){
-                                if (board[k][l+1] == SquareColor.LIGHT_BLUE){
+                                if (board[k][l+1] == SquareColor.BACKGROUND){
                                 board[k][l+1] = board[k][l];
-                                board[k][l] =SquareColor.LIGHT_BLUE;
+                                board[k][l] =SquareColor.BACKGROUND;
                                  Position myPos = new Position(k,l);
                             foreach (Position pos in PiecesTetris){
                                 if (pos.posY == myPos.posY && pos.posX == myPos.posX){
@@ -110,7 +110,7 @@ public class Position{
                 for (int j = 0; j <=Pwidth-1; j++){
                     if (Contain(i,j) ){
                         if (i<21){
-                            if (board[i+1][j] != SquareColor.LIGHT_BLUE && !Contain(i+1,j)){
+                            if (board[i+1][j] != SquareColor.BACKGROUND && !Contain(i+1,j)){
                                 checkLigne(board);
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
@@ -124,19 +124,19 @@ public class Position{
     private static void checkLigne(List<List<SquareColor>> board){ // check if there is a line to delete
         for (int i = 0; i <=Pheight-1; i++){
                 for (int j = 0; j <=Pwidth-1; j++){
-                    if (board[i][j] == SquareColor.LIGHT_BLUE){
+                    if (board[i][j] == SquareColor.BACKGROUND){
                         break;
                     }else if (j == Pwidth-1){
                         for (int k = 0; k <=Pwidth-1; k++){
-                            board[i][k] = SquareColor.LIGHT_BLUE;
+                            board[i][k] = SquareColor.BACKGROUND;
                         }
                         score = score+100;
                         GridDisplay.SetScore(score);
                         for (int l = i; l >=0; l--){
                             for (int m = 0; m <=Pwidth-1; m++){
-                                if (board[l][m] != SquareColor.LIGHT_BLUE){
+                                if (board[l][m] != SquareColor.BACKGROUND){
                                     board[l+1][m] = board[l][m];
-                                    board[l][m] = SquareColor.LIGHT_BLUE;
+                                    board[l][m] = SquareColor.BACKGROUND;
                                 }
                             }
                         }
@@ -172,8 +172,8 @@ public class Position{
         foreach(Position item in PiecesTetris){
             int newY = middleY +(item.posX - middleX);
             int newX = middleX -(item.posY - middleY);
-            if (board[newY][newX] == SquareColor.LIGHT_BLUE || board[newY][newX] == color){ // check around the piece to make sure it's possible to rotate 
-                board[item.posY][item.posX] = SquareColor.LIGHT_BLUE ;
+            if (board[newY][newX] == SquareColor.BACKGROUND || board[newY][newX] == color){ // check around the piece to make sure it's possible to rotate 
+                board[item.posY][item.posX] = SquareColor.BACKGROUND ;
                 NewPiecesTetris.Add(new Position (newY,newX));
             } else {
                 isPossibleToRotate = false;

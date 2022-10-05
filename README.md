@@ -1,13 +1,13 @@
 ***
-# **Projet TETRIS**
+# **TETRIS Project**
 
 ***
 
 ## **Introduction :**
-Nous sommes une équipe qui est composée de s personnes : **GUENARD Juliette**, **RAYNAUD Adrien**.
-Nous avions pour but de créer un Tetris avec une interface unity (qui nous à été donné). Notre but était donc de créer un tetris de A à Z  .
-Ce projet nous à demander de démontrer  entre autres 
-- La gestion de projet
+Let's introduce ourselves ! We are : **GUENARD Juliette**, **RAYNAUD Adrien** and we're this game's developers.
+Our main goal was to create a C# Tetris with an Unity Interface (provided by teachers).
+This project allow us those following notions :
+- Project'management
 - La maîtrise de la syntaxe C#
 - La maîtrise de la programmation orientée objet
 - La construction d'algorithmes complexes

@@ -17,7 +17,7 @@ public class GridDisplay : MonoBehaviour
         for (int i=0;i<height;i++){
             List<SquareColor> Ligne = new List<SquareColor>();
             for (int j = 0;j<width;j++){
-                Ligne.Add(SquareColor.LIGHT_BLUE);
+                Ligne.Add(SquareColor.BACKGROUND);
             }
             board.Add(Ligne);
         }
@@ -55,10 +55,10 @@ public class GridDisplay : MonoBehaviour
     private static int CheckPosition (List<List<SquareColor>> board){ // Check if the piece can be moved left or right
         for (int i = height-1; i >=0; i--){
             for (int j = width-1; j >=0; j--){
-                if ((j+1>9 || (board[i][j+1] != SquareColor.LIGHT_BLUE && !Position.Contain(i,j+1)) ) && Position.Contain(i,j)){
+                if ((j+1>9 || (board[i][j+1] != SquareColor.BACKGROUND && !Position.Contain(i,j+1)) ) && Position.Contain(i,j)){
                     check = 1;
                     return check;
-                }else if ((j-1<0 || (board[i][j-1] != SquareColor.LIGHT_BLUE && !Position.Contain(i,j-1)) ) && Position.Contain(i,j)){
+                }else if ((j-1<0 || (board[i][j-1] != SquareColor.BACKGROUND && !Position.Contain(i,j-1)) ) && Position.Contain(i,j)){
                     check = 2;
                     return check;
                 }

@@ -27,7 +27,7 @@ public class _Square : MonoBehaviour
 
     private Color getColor(){
         switch(color){
-            case SquareColor.LIGHT_BLUE:
+            case SquareColor.BACKGROUND:
             return new Color(0.00f,0.17f,0.24f); //#001724
             case SquareColor.DEEP_BLUE:
             return new Color(0.15f,0.67f,0.60f);
