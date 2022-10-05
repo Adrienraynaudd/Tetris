@@ -14,7 +14,7 @@ public class Position{
         private static int score = 0;
         private static int Pheight = GridDisplay.height;
         private static int Pwidth = GridDisplay.width;
-            public static  void DownPiece (List<List<SquareColor>> board){ // move the piece down
+            public static  void DownPiece (List<List<SquareColor>> board){// move the piece down
             for (int i = Pheight-1; i >=0; i--){
                 for (int j = Pwidth-1; j >=0; j--){
                     if (board[i][j] != SquareColor.LIGHT_BLUE && Contain(i,j)){ // if the square is not empty and if the square is part of the piece
@@ -163,24 +163,32 @@ public class Position{
                 xmax = item.posX;
             }
             }
-        if (xmin != 0 && xmax != 9 ){ // empêcher la rotation sur le bords !
+        if (xmin != 0 && xmax != 9 ){ // empêcher la rotation sur les bords !
         int middleY = (ymin +ymax)/2;
         int middleX = (xmin +xmax)/2;
+        bool isPossibleToRotate = true;
         List<Position> NewPiecesTetris = new List<Position>(); //a list of the new positions of the turned piece.
         SquareColor color = board[PiecesTetris[0].posY][PiecesTetris[0].posX]; //here I get the color of the falling piece.
         foreach(Position item in PiecesTetris){
             int newY = middleY +(item.posX - middleX);
             int newX = middleX -(item.posY - middleY);
-            board[item.posY][item.posX-1] = SquareColor.LIGHT_BLUE ;
-            board[newY][newX] = color;
-            NewPiecesTetris.Add(new Position (newY,newX));
+            if (board[newY][newX] == SquareColor.LIGHT_BLUE || board[newY][newX] == color){ // check around the piece to make sure it's possible to rotate 
+                board[item.posY][item.posX] = SquareColor.LIGHT_BLUE ;
+                NewPiecesTetris.Add(new Position (newY,newX));
+            } else {
+                isPossibleToRotate = false;
             }
-            PiecesTetris = NewPiecesTetris; 
-            foreach(Position item in PiecesTetris){ //I make sure to color my new positions well.
+            }
+            if (isPossibleToRotate == true){
+                PiecesTetris = NewPiecesTetris;    
+                foreach(Position item in PiecesTetris){ //I make sure to color my new positions well.
                 board[item.posY][item.posX] = color;
             }
-
-            //TODO : Regler le décalage lier aux int qui arrondissent décale le centre legerment vers la gauche.
+            } else {
+                foreach(Position item in PiecesTetris){
+                    board[item.posY][item.posX] = color;
+                } 
+            } //TODO : Regler le décalage lier aux int qui arrondissent décale le centre legerment vers la gauche.
         }
     }
 }
