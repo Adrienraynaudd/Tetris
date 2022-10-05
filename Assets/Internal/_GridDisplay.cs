@@ -38,13 +38,13 @@ public class _GridDisplay : MonoBehaviour
 
     public GameObject squarePrefab = null;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Create();
     }
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
         this.tickCoroutine = StartCoroutine(LaunchTicks());
     }
@@ -66,7 +66,7 @@ public class _GridDisplay : MonoBehaviour
 
     public void SetScore(int score){
         if(this.score){
-            this.score.SetText($"{score}");
+            this.score.SetText($"Votre score : {score}");
         }
     }
 
@@ -108,16 +108,18 @@ public class _GridDisplay : MonoBehaviour
     }
 
     void OnRush(){
-        if(this.MoveRight != null){
-            this.MoveRight();
+        if(this.Rush != null){
+            this.Rush();
         }
     }
 
 
     IEnumerator LaunchTicks(){
-        yield return new WaitForSeconds(tick);
-        if(Tick != null){
-            Tick();
+        while(true){
+            yield return new WaitForSeconds(tick);
+            if(Tick != null){
+                Tick();
+            }
         }
     }
 }

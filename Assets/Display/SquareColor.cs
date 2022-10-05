@@ -1,6 +1,6 @@
 [System.Serializable]
 public enum SquareColor {
-    LIGHT_BLUE,
+    BACKGROUND,
     DEEP_BLUE,
     ORANGE,
     YELLOW,
@@ -8,5 +8,6 @@ public enum SquareColor {
     PURPLE,
     RED,
     TRANSPARENT,
+    PINK,
 }
 
