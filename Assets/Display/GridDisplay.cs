@@ -26,6 +26,7 @@ public class GridDisplay : MonoBehaviour
         Pieces.piece(board);// Create the first piece
         SetColors(board);
         SetTickFunction (() =>  { // We define the function that will be called at each tick
+            Check.checkPiece(board);
             Position.DownPiece(board);
             SetColors(board);
         });
