@@ -10,8 +10,7 @@ public class Position{
         this.posY = posY;
         this.posX = posX;
     }
-        private static int index = 4;
-        private static int score = 0;
+        public static int index = 4;
         private static int Pheight = GridDisplay.height;
         private static int Pwidth = GridDisplay.width;
             public static  void DownPiece (List<List<SquareColor>> board){ // move the piece down
@@ -30,17 +29,17 @@ public class Position{
                                 }
                             index++;
                             if (index >= 4){ // verifie if the piece can be moved down
-                                checkPiece(board);
+                                Check.checkPiece(board);
                                 index =0;
                             }
                         }else {
-                                checkLigne(board);
+                                Check.checkLigne(board);
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
                                 index =0;
                         }
                     }else {
-                                checkLigne(board);
+                                Check.checkLigne(board);
                                 PiecesTetris.Clear();
                                 Pieces.piece(board);
                                 index =0;
@@ -95,7 +94,6 @@ public class Position{
             }
         }
     }
-
     public static bool Contain (int A , int B){ // check if the square is part of the piece
         Position myPos = new Position(A,B);
         foreach (Position pos in PiecesTetris){
@@ -104,45 +102,6 @@ public class Position{
             }
         }
         return false;
-    }
-    private static void checkPiece(List<List<SquareColor>> board){ // check if the piece can be moved down
-        for (int i = 0; i <=Pheight-1; i++){
-                for (int j = 0; j <=Pwidth-1; j++){
-                    if (Contain(i,j) ){
-                        if (i<21){
-                            if (board[i+1][j] != SquareColor.LIGHT_BLUE && !Contain(i+1,j)){
-                                checkLigne(board);
-                                PiecesTetris.Clear();
-                                Pieces.piece(board);
-                                index =0;
-                            }
-                        }
-                    }
-            }
-        }
-    }
-    private static void checkLigne(List<List<SquareColor>> board){ // check if there is a line to delete
-        for (int i = 0; i <=Pheight-1; i++){
-                for (int j = 0; j <=Pwidth-1; j++){
-                    if (board[i][j] == SquareColor.LIGHT_BLUE){
-                        break;
-                    }else if (j == Pwidth-1){
-                        for (int k = 0; k <=Pwidth-1; k++){
-                            board[i][k] = SquareColor.LIGHT_BLUE;
-                        }
-                        score = score+100;
-                        GridDisplay.SetScore(score);
-                        for (int l = i; l >=0; l--){
-                            for (int m = 0; m <=Pwidth-1; m++){
-                                if (board[l][m] != SquareColor.LIGHT_BLUE){
-                                    board[l+1][m] = board[l][m];
-                                    board[l][m] = SquareColor.LIGHT_BLUE;
-                                }
-                            }
-                        }
-                    }
-            }
-        }
     }
     public static void Rotate(List<List<SquareColor>> board){
         int xmin = 99;
